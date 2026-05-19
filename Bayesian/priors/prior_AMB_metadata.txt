@@ -1,0 +1,10 @@
+station_id    : AMB
+station_lat   : -3.68
+station_lon   : 128.18
+catalog       : D:\multi\scalogramv3\2026.csv
+bandwidth_deg : 15.0
+n_events      : 836
+bins          : 360
+pdf_sum       : 1.00000000
+azimuth_mean  : 244.36
+azimuth_std   : 107.10

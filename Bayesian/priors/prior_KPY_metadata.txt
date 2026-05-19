@@ -1,0 +1,10 @@
+station_id    : KPY
+station_lat   : -3.68
+station_lon   : 102.58
+catalog       : D:\multi\scalogramv3\2026.csv
+bandwidth_deg : 15.0
+n_events      : 836
+bins          : 360
+pdf_sum       : 1.00000000
+azimuth_mean  : 105.32
+azimuth_std   : 59.89

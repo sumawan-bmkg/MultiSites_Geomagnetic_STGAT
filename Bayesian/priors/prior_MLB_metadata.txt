@@ -1,0 +1,10 @@
+station_id    : MLB
+station_lat   : -1.48
+station_lon   : 127.48
+catalog       : D:\multi\scalogramv3\2026.csv
+bandwidth_deg : 15.0
+n_events      : 836
+bins          : 360
+pdf_sum       : 1.00000000
+azimuth_mean  : 233.42
+azimuth_std   : 105.25

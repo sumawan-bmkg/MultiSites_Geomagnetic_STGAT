@@ -1,0 +1,10 @@
+station_id    : SKB
+station_lat   : -1.24
+station_lon   : 116.87
+catalog       : D:\multi\scalogramv3\2026.csv
+bandwidth_deg : 15.0
+n_events      : 836
+bins          : 360
+pdf_sum       : 1.00000000
+azimuth_mean  : 116.04
+azimuth_std   : 65.48

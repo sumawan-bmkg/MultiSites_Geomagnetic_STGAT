@@ -1,0 +1,114 @@
+
+----------------------------------------------------------------------
+  V9.3 PHYSICS-INFORMED SIDECAR — TRAINING LOG
+  Started: 2026-04-30 13:43:59
+----------------------------------------------------------------------
+Device          : cpu
+H5 Path         : d:\multi\scalogramv3\scalogram_v3_cosmic_final.h5
+V8 Checkpoint   : d:\multi\scalogramv3\checkpoints\v3_v8_conv_fpr_best_weights.pth
+Priors Dir      : d:\multi\scalogramv3\Bayesian\priors
+Epochs          : 30
+Head LR         : 0.0005
+Weight Decay    : 0.05
+Gate Lambda     : 0.5
+Batch Size      : 16
+Mask Positives  : True
+Early Stop Pat. : 10
+
+----------------------------------------------------------------------
+  STEP 1: Loading Dataset with Station-Specific Dynamic Priors
+----------------------------------------------------------------------
+[OK] Train batches: 466
+[OK] Val batches  : 107
+
+----------------------------------------------------------------------
+  STEP 2: Building V9.3 Physics-Informed Model
+----------------------------------------------------------------------
+[OK] Total params    : 9,561,996
+[OK] Trainable params: 186,050
+[OK] Frozen params   : 9,375,946
+[INFO] Trainable parameter names:
+  head_azimuth_bayesian.prior_proj.0.weight  (57,600 params)
+  head_azimuth_bayesian.prior_proj.0.bias  (160 params)
+  head_azimuth_bayesian.prior_proj.1.weight  (160 params)
+  head_azimuth_bayesian.prior_proj.1.bias  (160 params)
+  head_azimuth_bayesian.img_proj.0.weight  (65,536 params)
+  head_azimuth_bayesian.img_proj.0.bias  (128 params)
+  head_azimuth_bayesian.img_proj.1.weight  (128 params)
+  head_azimuth_bayesian.img_proj.1.bias  (128 params)
+  head_azimuth_bayesian.physics_proj.0.weight  (96 params)
+  head_azimuth_bayesian.physics_proj.0.bias  (32 params)
+  head_azimuth_bayesian.gate_net.0.weight  (51,200 params)
+  head_azimuth_bayesian.gate_net.0.bias  (160 params)
+  head_azimuth_bayesian.out_net.0.weight  (10,240 params)
+  head_azimuth_bayesian.out_net.0.bias  (64 params)
+  head_azimuth_bayesian.out_net.1.weight  (64 params)
+  head_azimuth_bayesian.out_net.1.bias  (64 params)
+  head_azimuth_bayesian.out_net.4.weight  (128 params)
+  head_azimuth_bayesian.out_net.4.bias  (2 params)
+
+----------------------------------------------------------------------
+  STEP 3: Optimizer & Scheduler (Head Only)
+----------------------------------------------------------------------
+[OK] Loss      : VonMisesDirectionalLoss
+[OK] Optimizer : AdamW (lr=0.0005, wd=0.05)
+[OK] Scheduler : CosineAnnealingWarmRestarts (T_0=5, T_mult=1)
+
+======================================================================
+  STARTING V9.3 TRAINING — PHYSICS-INFORMED SIDECAR
+  Target: Val MAE < 25 deg
+======================================================================
+
+Epoch 01/30 | Loss=0.2002 DirLoss=0.1888 MAE=21.40 MedAE=5.27 | ValMAE=68.97 ValMedAE=41.26 | Gate(T/V)=0.884/0.941 | GatePen=0.0228 | LR=5.00e-04 | Samples(T/V)=3724/1628 | 1174.7s
+  NEW BEST Val MAE = 68.97deg -> saved: v9_3_physics_best.pth
+Epoch 02/30 | Loss=0.1666 DirLoss=0.1652 MAE=17.71 MedAE=2.46 | ValMAE=66.76 ValMedAE=37.79 | Gate(T/V)=0.948/0.943 | GatePen=0.0028 | LR=4.52e-04 | Samples(T/V)=3683/1628 | 1008.0s
+  NEW BEST Val MAE = 66.76deg -> saved: v9_3_physics_best.pth
+Epoch 03/30 | Loss=0.1558 DirLoss=0.1549 MAE=16.65 MedAE=1.92 | ValMAE=65.28 ValMedAE=36.09 | Gate(T/V)=0.960/0.956 | GatePen=0.0016 | LR=3.27e-04 | Samples(T/V)=3760/1628 | 991.3s
+  NEW BEST Val MAE = 65.28deg -> saved: v9_3_physics_best.pth
+Epoch 04/30 | Loss=0.1421 DirLoss=0.1414 MAE=15.47 MedAE=1.56 | ValMAE=64.80 ValMedAE=35.95 | Gate(T/V)=0.964/0.955 | GatePen=0.0013 | LR=1.73e-04 | Samples(T/V)=3647/1628 | 980.1s
+  NEW BEST Val MAE = 64.80deg -> saved: v9_3_physics_best.pth
+Epoch 05/30 | Loss=0.1546 DirLoss=0.1539 MAE=16.31 MedAE=1.37 | ValMAE=64.48 ValMedAE=36.82 | Gate(T/V)=0.964/0.956 | GatePen=0.0013 | LR=4.77e-05 | Samples(T/V)=3754/1628 | 1047.8s
+  NEW BEST Val MAE = 64.48deg -> saved: v9_3_physics_best.pth
+Epoch 06/30 | Loss=0.1538 DirLoss=0.1531 MAE=16.44 MedAE=1.28 | ValMAE=67.82 ValMedAE=41.74 | Gate(T/V)=0.965/0.961 | GatePen=0.0013 | LR=5.00e-04 | Samples(T/V)=3719/1628 | 1533.3s
+Epoch 07/30 | Loss=0.1346 DirLoss=0.1341 MAE=14.46 MedAE=1.02 | ValMAE=64.35 ValMedAE=34.61 | Gate(T/V)=0.969/0.959 | GatePen=0.0010 | LR=4.52e-04 | Samples(T/V)=3703/1628 | 1546.9s
+  NEW BEST Val MAE = 64.35deg -> saved: v9_3_physics_best.pth
+Epoch 08/30 | Loss=0.1541 DirLoss=0.1537 MAE=16.05 MedAE=0.83 | ValMAE=64.73 ValMedAE=37.32 | Gate(T/V)=0.971/0.962 | GatePen=0.0009 | LR=3.27e-04 | Samples(T/V)=3820/1628 | 1102.2s
+Epoch 09/30 | Loss=0.1510 DirLoss=0.1505 MAE=15.76 MedAE=0.65 | ValMAE=67.03 ValMedAE=36.97 | Gate(T/V)=0.971/0.964 | GatePen=0.0009 | LR=1.73e-04 | Samples(T/V)=3644/1628 | 1026.9s
+Epoch 10/30 | Loss=0.1485 DirLoss=0.1481 MAE=15.32 MedAE=0.60 | ValMAE=65.44 ValMedAE=38.56 | Gate(T/V)=0.972/0.961 | GatePen=0.0008 | LR=4.77e-05 | Samples(T/V)=3771/1628 | 1023.0s
+Epoch 11/30 | Loss=0.1524 DirLoss=0.1519 MAE=15.92 MedAE=0.76 | ValMAE=64.84 ValMedAE=35.79 | Gate(T/V)=0.971/0.961 | GatePen=0.0009 | LR=5.00e-04 | Samples(T/V)=3786/1628 | 981.0s
+Epoch 12/30 | Loss=0.1484 DirLoss=0.1480 MAE=15.96 MedAE=0.68 | ValMAE=65.23 ValMedAE=37.31 | Gate(T/V)=0.972/0.962 | GatePen=0.0008 | LR=4.52e-04 | Samples(T/V)=3722/1628 | 981.7s
+Epoch 13/30 | Loss=0.1428 DirLoss=0.1423 MAE=15.28 MedAE=0.65 | ValMAE=64.13 ValMedAE=34.92 | Gate(T/V)=0.972/0.963 | GatePen=0.0008 | LR=3.27e-04 | Samples(T/V)=3694/1628 | 976.2s
+  NEW BEST Val MAE = 64.13deg -> saved: v9_3_physics_best.pth
+Epoch 14/30 | Loss=0.1542 DirLoss=0.1539 MAE=16.00 MedAE=0.54 | ValMAE=65.17 ValMedAE=35.18 | Gate(T/V)=0.974/0.969 | GatePen=0.0007 | LR=1.73e-04 | Samples(T/V)=3651/1628 | 973.2s
+Epoch 15/30 | Loss=0.1296 DirLoss=0.1293 MAE=13.73 MedAE=0.47 | ValMAE=63.51 ValMedAE=35.18 | Gate(T/V)=0.976/0.966 | GatePen=0.0006 | LR=4.77e-05 | Samples(T/V)=3784/1628 | 978.1s
+  NEW BEST Val MAE = 63.51deg -> saved: v9_3_physics_best.pth
+Epoch 16/30 | Loss=0.1466 DirLoss=0.1463 MAE=15.40 MedAE=0.63 | ValMAE=63.27 ValMedAE=36.72 | Gate(T/V)=0.974/0.966 | GatePen=0.0007 | LR=5.00e-04 | Samples(T/V)=3782/1628 | 975.3s
+  NEW BEST Val MAE = 63.27deg -> saved: v9_3_physics_best.pth
+Epoch 17/30 | Loss=0.1537 DirLoss=0.1534 MAE=16.04 MedAE=0.66 | ValMAE=61.73 ValMedAE=31.80 | Gate(T/V)=0.974/0.964 | GatePen=0.0007 | LR=4.52e-04 | Samples(T/V)=3718/1628 | 973.8s
+  NEW BEST Val MAE = 61.73deg -> saved: v9_3_physics_best.pth
+Epoch 18/30 | Loss=0.1509 DirLoss=0.1506 MAE=15.77 MedAE=0.50 | ValMAE=65.74 ValMedAE=37.85 | Gate(T/V)=0.974/0.964 | GatePen=0.0007 | LR=3.27e-04 | Samples(T/V)=3694/1628 | 972.7s
+Epoch 19/30 | Loss=0.1488 DirLoss=0.1485 MAE=15.24 MedAE=0.47 | ValMAE=61.26 ValMedAE=30.10 | Gate(T/V)=0.975/0.966 | GatePen=0.0006 | LR=1.73e-04 | Samples(T/V)=3727/1628 | 977.0s
+  NEW BEST Val MAE = 61.26deg -> saved: v9_3_physics_best.pth
+Epoch 20/30 | Loss=0.1604 DirLoss=0.1601 MAE=16.39 MedAE=0.41 | ValMAE=62.63 ValMedAE=33.69 | Gate(T/V)=0.976/0.966 | GatePen=0.0006 | LR=4.77e-05 | Samples(T/V)=3711/1628 | 973.1s
+Epoch 21/30 | Loss=0.1540 DirLoss=0.1537 MAE=15.52 MedAE=0.53 | ValMAE=64.00 ValMedAE=33.01 | Gate(T/V)=0.975/0.967 | GatePen=0.0006 | LR=5.00e-04 | Samples(T/V)=3671/1628 | 974.3s
+Epoch 22/30 | Loss=0.1438 DirLoss=0.1435 MAE=15.37 MedAE=0.66 | ValMAE=61.12 ValMedAE=28.22 | Gate(T/V)=0.975/0.964 | GatePen=0.0006 | LR=4.52e-04 | Samples(T/V)=3713/1628 | 979.3s
+  NEW BEST Val MAE = 61.12deg -> saved: v9_3_physics_best.pth
+Epoch 23/30 | Loss=0.1463 DirLoss=0.1459 MAE=14.94 MedAE=0.62 | ValMAE=63.65 ValMedAE=32.39 | Gate(T/V)=0.975/0.964 | GatePen=0.0007 | LR=3.27e-04 | Samples(T/V)=3759/1628 | 973.1s
+Epoch 24/30 | Loss=0.1497 DirLoss=0.1494 MAE=15.79 MedAE=0.63 | ValMAE=62.40 ValMedAE=31.95 | Gate(T/V)=0.974/0.964 | GatePen=0.0007 | LR=1.73e-04 | Samples(T/V)=3736/1628 | 974.1s
+Epoch 25/30 | Loss=0.1435 DirLoss=0.1431 MAE=14.92 MedAE=0.46 | ValMAE=62.59 ValMedAE=31.56 | Gate(T/V)=0.975/0.964 | GatePen=0.0006 | LR=4.77e-05 | Samples(T/V)=3732/1628 | 972.4s
+Epoch 26/30 | Loss=0.1403 DirLoss=0.1400 MAE=15.17 MedAE=0.56 | ValMAE=61.83 ValMedAE=31.05 | Gate(T/V)=0.975/0.963 | GatePen=0.0006 | LR=5.00e-04 | Samples(T/V)=3657/1628 | 976.4s
+Epoch 27/30 | Loss=0.1434 DirLoss=0.1431 MAE=14.93 MedAE=0.68 | ValMAE=60.02 ValMedAE=26.22 | Gate(T/V)=0.975/0.962 | GatePen=0.0007 | LR=4.52e-04 | Samples(T/V)=3723/1628 | 973.5s
+  NEW BEST Val MAE = 60.02deg -> saved: v9_3_physics_best.pth
+Epoch 28/30 | Loss=0.1461 DirLoss=0.1458 MAE=15.03 MedAE=0.62 | ValMAE=62.06 ValMedAE=28.08 | Gate(T/V)=0.976/0.967 | GatePen=0.0006 | LR=3.27e-04 | Samples(T/V)=3658/1628 | 974.7s
+Epoch 29/30 | Loss=0.1480 DirLoss=0.1478 MAE=15.34 MedAE=0.52 | ValMAE=61.21 ValMedAE=28.93 | Gate(T/V)=0.977/0.966 | GatePen=0.0006 | LR=1.73e-04 | Samples(T/V)=3692/1628 | 973.2s
+Epoch 30/30 | Loss=0.1459 DirLoss=0.1456 MAE=14.80 MedAE=0.45 | ValMAE=61.93 ValMedAE=30.89 | Gate(T/V)=0.976/0.967 | GatePen=0.0006 | LR=4.77e-05 | Samples(T/V)=3715/1628 | 972.2s
+
+======================================================================
+  V9.3 TRAINING COMPLETE — PHYSICS-INFORMED SIDECAR
+======================================================================
+  Best Epoch       : 30
+  Best Val MAE     : 60.02deg
+  Checkpoint       : d:\multi\scalogramv3\Bayesian\v9_3_physics_best.pth
+  Target MAE < 25deg : NOT YET
+======================================================================
+[OK] Training history -> d:\multi\scalogramv3\Bayesian\v9_3_training_history.csv

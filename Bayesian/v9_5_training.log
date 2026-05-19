@@ -1,0 +1,49 @@
+Epoch 01 | Loss: 0.1848 | Train MAE: 19.56 | Val MAE: 61.54 | Gate V: 0.992
+  --> NEW BEST Val MAE: 61.54
+Epoch 02 | Loss: 0.1533 | Train MAE: 16.68 | Val MAE: 60.33 | Gate V: 0.994
+  [Diagnostics] Top 3 Bad Stations: [('LWK', np.float64(104.81697463989258)), ('TNT', np.float64(92.79330869154496)), ('SMI', np.float64(81.00586739453402))]
+  --> NEW BEST Val MAE: 60.33
+Epoch 03 | Loss: 0.1306 | Train MAE: 14.54 | Val MAE: 59.65 | Gate V: 0.996
+  --> NEW BEST Val MAE: 59.65
+Epoch 04 | Loss: 0.1382 | Train MAE: 15.40 | Val MAE: 52.77 | Gate V: 0.996
+  [Diagnostics] Top 3 Bad Stations: [('LWK', np.float64(89.83874485709451)), ('TNT', np.float64(86.97325351021506)), ('SRO', np.float64(76.07293441078879))]
+  --> NEW BEST Val MAE: 52.77
+Epoch 05 | Loss: 0.1298 | Train MAE: 14.79 | Val MAE: 55.39 | Gate V: 0.996
+Epoch 06 | Loss: 0.1233 | Train MAE: 13.94 | Val MAE: 55.39 | Gate V: 0.997
+  [Diagnostics] Top 3 Bad Stations: [('SRO', np.float64(102.06186363913797)), ('LWK', np.float64(82.33108945326371)), ('TNT', np.float64(78.65277628465132))]
+Epoch 07 | Loss: 0.1305 | Train MAE: 14.72 | Val MAE: 56.60 | Gate V: 0.997
+Epoch 08 | Loss: 0.1206 | Train MAE: 13.70 | Val MAE: 56.53 | Gate V: 0.998
+  [Diagnostics] Top 3 Bad Stations: [('SRO', np.float64(113.45522724498402)), ('AMB', np.float64(108.90655517578125)), ('PLU', np.float64(90.91181052814831))]
+Epoch 09 | Loss: 0.1233 | Train MAE: 13.87 | Val MAE: 55.28 | Gate V: 0.998
+Epoch 10 | Loss: 0.1296 | Train MAE: 14.28 | Val MAE: 54.49 | Gate V: 0.997
+  [Diagnostics] Top 3 Bad Stations: [('SRO', np.float64(93.62633549083363)), ('PLU', np.float64(92.97608262842351)), ('LWK', np.float64(80.87875686992298))]
+Epoch 11 | Loss: 0.1248 | Train MAE: 14.23 | Val MAE: 56.58 | Gate V: 0.998
+Epoch 12 | Loss: 0.1200 | Train MAE: 13.59 | Val MAE: 54.94 | Gate V: 0.998
+  [Diagnostics] Top 3 Bad Stations: [('AMB', np.float64(111.5621337890625)), ('SRO', np.float64(93.86994621970437)), ('PLU', np.float64(85.91217673908581))]
+Epoch 13 | Loss: 0.1243 | Train MAE: 13.91 | Val MAE: 54.46 | Gate V: 0.998
+Epoch 14 | Loss: 0.1107 | Train MAE: 12.53 | Val MAE: 54.99 | Gate V: 0.998
+  [Diagnostics] Top 3 Bad Stations: [('PLU', np.float64(87.8507706902244)), ('LWK', np.float64(87.29811971837825)), ('SRO', np.float64(79.4650729786266))]
+Epoch 15 | Loss: 0.1167 | Train MAE: 13.34 | Val MAE: 54.92 | Gate V: 0.998
+Epoch 16 | Loss: 0.1256 | Train MAE: 14.06 | Val MAE: 56.24 | Gate V: 0.999
+  [Diagnostics] Top 3 Bad Stations: [('SRO', np.float64(92.0558010448109)), ('LWK', np.float64(85.60145785591818)), ('TNT', np.float64(82.72807216644287))]
+Epoch 17 | Loss: 0.1203 | Train MAE: 13.44 | Val MAE: 55.79 | Gate V: 0.998
+Epoch 18 | Loss: 0.1187 | Train MAE: 13.40 | Val MAE: 54.22 | Gate V: 0.998
+  [Diagnostics] Top 3 Bad Stations: [('PLU', np.float64(89.95826296372847)), ('LWK', np.float64(87.97375184839422)), ('SRO', np.float64(83.76006785306063))]
+Epoch 19 | Loss: 0.1143 | Train MAE: 13.13 | Val MAE: 53.79 | Gate V: 0.998
+Epoch 20 | Loss: 0.1149 | Train MAE: 13.27 | Val MAE: 54.53 | Gate V: 0.999
+  [Diagnostics] Top 3 Bad Stations: [('PLU', np.float64(90.39400664242831)), ('LWK', np.float64(87.82299015738748)), ('SRO', np.float64(79.45731683210893))]
+Epoch 21 | Loss: 0.1129 | Train MAE: 12.98 | Val MAE: 55.12 | Gate V: 0.999
+Epoch 22 | Loss: 0.1202 | Train MAE: 13.77 | Val MAE: 54.11 | Gate V: 0.998
+  [Diagnostics] Top 3 Bad Stations: [('SRO', np.float64(91.17571709372781)), ('LWK', np.float64(87.98315264961936)), ('PLU', np.float64(82.65208148956299))]
+Epoch 23 | Loss: 0.1204 | Train MAE: 13.58 | Val MAE: 55.76 | Gate V: 0.998
+Epoch 24 | Loss: 0.1085 | Train MAE: 12.61 | Val MAE: 56.30 | Gate V: 0.999
+  [Diagnostics] Top 3 Bad Stations: [('SRO', np.float64(86.49990723349832)), ('PLU', np.float64(85.34830327467485)), ('ALR', np.float64(83.92081689834595))]
+Epoch 25 | Loss: 0.1073 | Train MAE: 12.11 | Val MAE: 55.16 | Gate V: 0.998
+Epoch 26 | Loss: 0.1062 | Train MAE: 12.12 | Val MAE: 56.70 | Gate V: 0.999
+  [Diagnostics] Top 3 Bad Stations: [('PLU', np.float64(96.3448640649969)), ('TNT', np.float64(87.52976495569402)), ('SRO', np.float64(83.29647081548518))]
+Epoch 27 | Loss: 0.1092 | Train MAE: 12.44 | Val MAE: 54.95 | Gate V: 0.998
+Epoch 28 | Loss: 0.1077 | Train MAE: 12.24 | Val MAE: 54.21 | Gate V: 0.998
+  [Diagnostics] Top 3 Bad Stations: [('PLU', np.float64(101.69600443406539)), ('LWK', np.float64(87.4058989611539)), ('TNT', np.float64(80.77709952267733))]
+Epoch 29 | Loss: 0.1082 | Train MAE: 12.21 | Val MAE: 55.26 | Gate V: 0.999
+Epoch 30 | Loss: 0.1193 | Train MAE: 13.17 | Val MAE: 55.28 | Gate V: 0.998
+  [Diagnostics] Top 3 Bad Stations: [('PLU', np.float64(95.86272057619962)), ('TNT', np.float64(84.39427921988748)), ('LWK', np.float64(80.44432423331521))]

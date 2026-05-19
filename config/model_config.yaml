@@ -1,0 +1,142 @@
+# ANTIGRAVITY Model Configuration
+# =================================
+
+# Model Architecture
+model:
+  name: "ANTIGRAVITY_GAT_DPINN"
+  
+  # Graph Attention Network (GAT) parameters
+  gat:
+    num_layers: 3
+    hidden_channels: 128
+    heads: 4  # Multi-head attention
+    dropout: 0.3
+    concat: true  # Concatenate attention heads
+    
+  # Physics-Informed Neural Network (DPINN) parameters
+  dpinn:
+    alpha_init: 0.0005  # Initial attenuation coefficient (km^-1)
+    alpha_learnable: true  # Learn alpha during training
+    alpha_min: 0.00001
+    alpha_max: 0.01
+    
+  # Output heads
+  output:
+    event_hidden: 64
+    magnitude_hidden: 32
+    azimuth_hidden: 32
+    distance_hidden: 64
+
+# Loss Function
+loss:
+  # Loss weights (lambda)
+  lambda_event: 1.0
+  lambda_magnitude: 0.5
+  lambda_azimuth: 0.3
+  lambda_distance: 0.5
+  lambda_physics: 0.2
+  
+  # Focal loss parameters (for event detection)
+  focal_alpha: 0.25
+  focal_gamma: 2.0
+  
+  # Use focal loss instead of BCE
+  use_focal_loss: true
+
+# Training
+training:
+  batch_size: 32
+  num_epochs: 100
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  
+  # Optimizer
+  optimizer: "Adam"  # Options: Adam, AdamW, SGD
+  
+  # Learning rate scheduler
+  scheduler:
+    type: "ReduceLROnPlateau"  # Options: ReduceLROnPlateau, StepLR, CosineAnnealingLR
+    patience: 10
+    factor: 0.5
+    min_lr: 0.00001
+  
+  # Early stopping
+  early_stopping:
+    enabled: true
+    patience: 20
+    min_delta: 0.001
+  
+  # Gradient clipping
+  gradient_clip:
+    enabled: true
+    max_norm: 1.0
+
+# Data
+data:
+  train_file: "data/train/graphs.pt"
+  val_file: "data/val/graphs.pt"
+  test_file: "data/test/graphs.pt"
+  
+  # Data augmentation (optional)
+  augmentation:
+    enabled: false
+    noise_std: 0.01
+  
+  # Normalization
+  normalize_features: true
+  normalize_targets: false
+
+# Evaluation
+evaluation:
+  # Metrics to track
+  metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1_score"
+    - "roc_auc"
+    - "mae_magnitude"
+    - "rmse_distance"
+    - "angular_error"
+    - "physics_compliance"
+  
+  # Evaluation frequency
+  eval_every_n_epochs: 1
+  
+  # Save best model based on
+  best_metric: "f1_score"
+  best_metric_mode: "max"  # max or min
+
+# Checkpointing
+checkpoint:
+  save_dir: "models/checkpoints"
+  save_every_n_epochs: 5
+  keep_last_n: 3
+  save_best: true
+
+# Logging
+logging:
+  log_dir: "models/logs"
+  tensorboard: true
+  wandb:
+    enabled: false
+    project: "ANTIGRAVITY"
+    entity: null
+  
+  # Log frequency
+  log_every_n_steps: 10
+
+# Hardware
+hardware:
+  device: "cuda"  # cuda, cpu, or mps (for Mac)
+  num_workers: 4
+  pin_memory: true
+
+# Reproducibility
+seed: 42
+
+# Cosmic Gating (Space Weather Module)
+cosmic_gating:
+  enabled: false  # Enable after basic model works
+  kp_threshold: 7.0  # Threshold for extreme space weather
+  gating_strength: 0.5  # How much to gate predictions during storms

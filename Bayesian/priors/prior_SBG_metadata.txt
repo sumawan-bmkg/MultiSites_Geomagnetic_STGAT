@@ -1,0 +1,10 @@
+station_id    : SBG
+station_lat   : -4.14
+station_lon   : 114.33
+catalog       : D:\multi\scalogramv3\2026.csv
+bandwidth_deg : 15.0
+n_events      : 836
+bins          : 360
+pdf_sum       : 1.00000000
+azimuth_mean  : 107.66
+azimuth_std   : 70.32

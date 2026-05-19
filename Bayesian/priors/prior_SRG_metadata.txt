@@ -1,0 +1,10 @@
+station_id    : SRG
+station_lat   : -6.8
+station_lon   : 111.52
+catalog       : D:\multi\scalogramv3\2026.csv
+bandwidth_deg : 15.0
+n_events      : 836
+bins          : 360
+pdf_sum       : 1.00000000
+azimuth_mean  : 101.40
+azimuth_std   : 73.45

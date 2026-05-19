@@ -1,0 +1,10 @@
+station_id    : SCN
+station_lat   : -6.12
+station_lon   : 106.58
+catalog       : D:\multi\scalogramv3\2026.csv
+bandwidth_deg : 15.0
+n_events      : 836
+bins          : 360
+pdf_sum       : 1.00000000
+azimuth_mean  : 103.85
+azimuth_std   : 69.19

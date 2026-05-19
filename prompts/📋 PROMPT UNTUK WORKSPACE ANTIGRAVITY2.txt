@@ -1,0 +1,21 @@
+?? PROMPT UNTUK WORKSPACE ANTIGRAVITY: UNIT TESTING & VALIDASI DATASET
+Tujuan: Lakukan pengujian otomatis (Automated Unit Testing) pada hasil pipeline dataset multi-stasiun (STGCN/DPINN) yang baru saja dibuat. Skrip ini harus memvalidasi bentuk tensor (tensor shape), ketiadaan kebocoran data (zero data leakage), keberadaan label fisika, dan logika Graph Adjacency Matrix sebelum dataset diumpankan ke model PyTorch.
+Tugas Utama: Buat dan jalankan skrip Python (menggunakan pytest atau assert) untuk memvalidasi 5 kriteria ketat berikut pada file dataset graf yang dihasilkan (misal dataset_graphs.pt atau file HDF5 terkait):
+UJI 1: Validasi Integritas Spasial (Dimensi Node & Masking)
+* Assert 1.1: Ambil 5 sampel acak Graph Snapshot dari dataloader. Pastikan dimensi fitur node selalu persis memiliki $N=24$ stasiun. (Ekspektasi shape dasar: [24, Channels, Height, Width]).
+* Assert 1.2: Lakukan pengecekan pada tanggal di mana diketahui ada stasiun yang offline (berdasarkan absennya file di folder scalogram3). Pastikan tensor stasiun tersebut diisi dengan tensor nol (0) atau nilai masking yang ditentukan, BUKAN NaN, dan pastikan arsitektur graf tidak crash.
+UJI 2: Validasi Strict Chronological Split (Anti-Data Leakage)
+* Assert 2.1: Iterasi seluruh sampel dalam Train Set. Pastikan TIDAK ADA SATU PUN sampel yang memiliki cap waktu (tanggal) melewati 31 Desember 2023.
+* Assert 2.2: Iterasi seluruh sampel dalam Validation Set. Pastikan tanggal berada EKSKLUSIF di rentang 1 Januari 2024 hingga 31 Maret 2025. Validasi juga bahwa sampel badai matahari ekstrem (Mei 2024, $Kp \ge 8.0$) benar-benar ada di Validation Set ini. 
+* Assert 2.3: Iterasi seluruh sampel dalam Test Set. Pastikan tanggal kejadian hanya berada pada tahun 2026 dan seterusnya. 
+UJI 3: Validasi Target DPINN & Multi-Task (Label Lengkap)
+* Assert 3.1: Untuk sampel yang ditandai sebagai kejadian prekursor gempa (y_event == 1), pastikan tensor target memiliki nilai yang valid (bukan NaN/Null) untuk y_mag (Magnitudo, $M_w > 0$), y_azm (Azimuth, $0 \le Azm \le 360$), dan y_dist (Jarak Episenter, $d > 0$).
+* Assert 3.2: Pastikan fitur cuaca antariksa (space_weather) yang terdiri dari Kp dan Dst memiliki nilai tipe float yang terekstrak dengan benar di setiap snapshot.
+UJI 4: Validasi Physics-Guided Adjacency Matrix (Topologi Graf)
+* Assert 4.1: Periksa Edge Attribute atau Adjacency Matrix. Pastikan nilai diagonal matriks adalah 1 (koneksi penuh ke diri sendiri).
+* Assert 4.2: Lakukan pengujian pada 2 pasang stasiun uji:
+o Pasangan Intra-plate (contoh: stasiun YOG dan TRT di Paparan Sunda). Pastikan faktor penalti tektonik $P_{fault} = 0.0$.
+o Pasangan Inter-plate (contoh: stasiun TND dan TNT yang dipisahkan oleh Molucca Sea Collision Zone). Pastikan edge attribute mereka terkena pemotongan nilai bobot dengan faktor penalti tektonik $P_{fault} = 0.5$.
+Keluaran yang Diharapkan:
+Cetak laporan (print) status pengujian di console: [PASSED], [FAILED], atau [WARNING] untuk setiap uji di atas. Jika ada uji yang berstatus [FAILED], berikan rincian letak baris atau sampel tanggal yang menyebabkan kegagalan tersebut agar dapat di-debug dengan cepat. JANGAN izinkan pembuatan Dataloader PyTorch jika masih ada uji yang gagal.
+

@@ -1,0 +1,10 @@
+station_id    : PLU
+station_lat   : -6.89
+station_lon   : 110.42
+catalog       : D:\multi\scalogramv3\2026.csv
+bandwidth_deg : 15.0
+n_events      : 836
+bins          : 360
+pdf_sum       : 0.99999994
+azimuth_mean  : 101.58
+azimuth_std   : 72.76

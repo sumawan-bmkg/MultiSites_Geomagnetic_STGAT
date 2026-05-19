@@ -1,0 +1,46 @@
+
+ARCHITECTURE DESCRIPTION
+========================
+
+1. INPUT LAYER
+   - HDF5 Scalogram: [Batch, 3 Channels, 128 Frequencies, 1440 Time Steps]
+   - Kp-Index: [Batch, 1] - Geomagnetic activity indicator
+
+2. CNN BACKBONE (ResNet-34)
+   - Extracts latent representations from scalogram
+   - Output: [Batch, 128] latent vector
+
+3. DUAL-HEAD ARCHITECTURE
+
+   A. DETECTION HEAD (SupCon)
+      - Supervised Contrastive Learning
+      - Binary classification (Noise vs Precursor)
+      - Output: [Batch, 2] class probabilities
+   
+   B. PHYSICS SIDECAR
+      - Dobrovolsky Strain Model
+      - Polarization Tensor Analysis
+      - Output: [Batch, 16] physics features
+
+4. DYNAMIC PRIOR MODULE
+   - Bayesian update mechanism
+   - Von Mises distribution parameters (μ, κ)
+   - Incorporates physics constraints
+
+5. GATED FUSION
+   - Attention-based gating mechanism
+   - Adaptive weight α ∈ [0, 1]
+   - Balances data-driven and physics-guided predictions
+
+6. AZIMUTH HEAD
+   - Von Mises distribution output
+   - Circular regression for azimuth angle
+   - Output: θ ∈ [0°, 360°)
+
+KEY INNOVATIONS
+===============
+- Multimodal fusion of seismic and geomagnetic data
+- Physics-guided learning via Dobrovolsky strain model
+- Supervised contrastive learning for robust detection
+- Gated fusion for adaptive physics integration
+- Circular statistics for azimuth prediction

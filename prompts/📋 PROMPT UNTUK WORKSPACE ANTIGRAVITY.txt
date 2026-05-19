@@ -1,0 +1,36 @@
+?? PROMPT UNTUK WORKSPACE ANTIGRAVITY
+Tujuan Utama: Baca folder “intial” terlebih dahulu. Lakukan Data Wrangling, Integrasi, dan Strict Chronological Split untuk persiapan dataset Spatio-Temporal Graph Neural Network (GNN) dan Dynamic Physics-Informed Neural Network (DPINN) berdasarkan data di folder “intial” file: lokasi_stasiun.csv dan earthquake_catalog_2018_2025_merged_robust.csv. Hindari Spatio-Temporal Data Leakage dengan menerapkan grouping berbasis waktu global (bukan per stasiun).
+Instruksi Detail:
+TAHAP 1: PEMERIKSAAN & PEMBERSIHAN DATA (DATA CLEANING)
+1. Muat lokasi_stasiun.csv. Hapus baris yang memiliki nilai NaN pada kolom koordinat atau Kode Stasiun. Pastikan hanya ada 24 stasiun valid.
+2. Muat earthquake_catalog_2018_2025_merged_robust.csv. Pastikan kolom tanggal/waktu diubah ke format datetime standar.
+3. Bersihkan metadata training historis. Jika ada kolom station yang berisi string angka (misal '20240125'), buang baris tersebut (indikasi anomali/bug penamaan).
+TAHAP 2: PEMBUATAN GRAF MULTI-STASIUN BERBASIS WAKTU (TIME-BASED GRAPH GROUPING)
+1. Jangan memproses fitur satu stasiun secara independen. Untuk setiap hari $t$ (atau jendela observasi prekursor), buat satu Snapshot Graf yang berisi vektor dari ke-24 stasiun secara simultan.
+2. Jika pada hari $t$ ada stasiun yang tidak memiliki data (hilang/mati), isi fitur node tersebut dengan zero-padding atau masking tensor (agar GAT tahu node tersebut tidak aktif).
+3. Untuk setiap Snapshot Graf (hari $t$), lakukan cross-referencing dengan earthquake_catalog_2018_2025_merged_robust.csv  (misalnya untuk jendela prekursor 1-14 hari sebelum kejadian gempa signifikan $M_w \ge 5.0$).
+TAHAP 3: EKSTRAKSI LABEL MULTI-TASK & FISIKA (DPINN REQUIREMENT)
+Untuk setiap Snapshot Graf yang terasosiasi dengan kejadian gempa, ekstrak 4 label target (ground truth) berikut:
+* label_event: (Biner 1/0) 1 jika $t$ berada dalam jendela prekursor, 0 jika background noise.
+* label_mag: Magnitudo gempa dari katalog (skala $M_w$).
+* label_azm: Vektor azimuth (derajat) dari pusat graf (atau rata-rata stasiun aktif) menuju episenter gempa.
+* [KRITIS] label_dist: Hitung jarak (dalam km) dari masing-masing stasiun aktif menuju episenter/hiposenter gempa menggunakan formula Haversine. Kolom ini mutlak diperlukan untuk mengkalkulasi fungsi loss DPINN:
+$$A=A_{0}e^{-\alpha d}$$
+TAHAP 4: KLASTERISASI TEKTONIK & INISIALISASI PENALTI (PHYSICS-GUIDED ADJACENCY)
+1. Berdasarkan lokasi_stasiun.csv, petakan setiap stasiun ke dalam atribut node baru bernama region_idx berdasarkan klaster berikut:
+o Klaster 0 (Sunda): SBG, MLB, SCN, KPY, LWA, LPS, SRG, SKB, CLP, YOG, TRT, GSI.
+o Klaster 1 (Wallacea): TND, GTO, LWK, PLU, TNT, TRD, LUT, ALR, ROT.
+o Klaster 2 (Sahul): SMI, AMB, JYP, SRO.
+2. Kalkulasi Adjacency Matrix awal untuk stasiun $i$ dan $j$ menggunakan formula Haversine untuk mencari jarak $d_{ij}$.
+3. Terapkan penalti tektonik ($P_{fault}$): Jika stasiun $i$ dan $j$ memiliki region_idx yang berbeda (melintasi batas tektonik/palung), tetapkan $P_{fault} = 0.5$. Jika sama, $P_{fault} = 0.0$.
+4. Simpan nilai $d_{ij}$ dan $P_{fault}$ sebagai edge_attr (atribut sisi) untuk jaringan spasial.
+TAHAP 5: STRICT CHRONOLOGICAL SPLIT (PEMBAGIAN KRONOLOGIS KETAT) Bagi dataset Snapshot Graf (beserta semua tensor HDF5 yang terhubung) ke dalam 3 folder (train, val, test) secara ketat berdasarkan atribut tanggal global, dengan mematuhi jendela operasional berikut: 
+* DATA TRAIN: Semua event & noise dari awal observasi hingga 31 Desember 2023.
+* DATA VALIDATION: Semua event & noise dari 1 Januari 2024 hingga 31 Maret 2025. (Pastikan anomali badai matahari Kp=9.0 pada Mei 2024 masuk di sini untuk mengevaluasi modul Cosmic Gating ). 
+* DATA TEST (BLIND TEST): Semua event & noise mulai dari 1 Januari 2026 dan seterusnya. 
+Format Output Akhir yang Diharapkan:
+Hasilkan file dataset_graphs.pt (format PyTorch Geometric) atau file HDF5 berstruktur hierarkis di mana setiap baris/entri adalah SATU HARI OBSERVASI (1 graph instance), yang memiliki atribut: x (fitur spasio-temporal 24 stasiun), edge_index, edge_attr, y_event, y_mag, y_azm, y_dist, dan space_weather (Kp/Dst).
+Buat project ini dalam repository terstruktur dengan menyimpan semua file dalam folder spesifik seperti: doc, models, data, config, scripts, plots, references dan lain sebagainya. Buat documentasi setiap langkap perubahan project dan simpan di folder doc. Semua documentasi (.md) simpan di folder doc.
+Kerjakan dengan teliti ikuti semua instruksi prompt, gunakan referensi penelitian terkini. 
+ 
+

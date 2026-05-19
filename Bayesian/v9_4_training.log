@@ -1,0 +1,10 @@
+Epoch 01 | Loss: 0.1822 | Train MAE: 19.36 | Val MAE: 66.43 | Gate V: 0.993
+  --> New Best Val MAE: 66.43
+Epoch 02 | Loss: 0.1492 | Train MAE: 16.27 | Val MAE: 60.72 | Gate V: 0.991
+  --> New Best Val MAE: 60.72
+Epoch 03 | Loss: 0.1344 | Train MAE: 15.11 | Val MAE: 59.09 | Gate V: 0.994
+  --> New Best Val MAE: 59.09
+Epoch 04 | Loss: 0.1330 | Train MAE: 15.01 | Val MAE: 59.34 | Gate V: 0.995
+Epoch 05 | Loss: 0.1393 | Train MAE: 15.46 | Val MAE: 58.05 | Gate V: 0.996
+  --> New Best Val MAE: 58.05
+Epoch 06 | Loss: 0.1235 | Train MAE: 13.87 | Val MAE: 59.76 | Gate V: 0.996

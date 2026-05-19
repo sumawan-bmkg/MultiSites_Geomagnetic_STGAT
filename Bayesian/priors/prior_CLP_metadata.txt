@@ -1,0 +1,10 @@
+station_id    : CLP
+station_lat   : -1.01
+station_lon   : 103.62
+catalog       : D:\multi\scalogramv3\2026.csv
+bandwidth_deg : 15.0
+n_events      : 836
+bins          : 360
+pdf_sum       : 1.00000000
+azimuth_mean  : 109.87
+azimuth_std   : 52.51

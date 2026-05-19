@@ -1,0 +1,116 @@
+
+----------------------------------------------------------------------
+  V9.2 SURGICAL TWEAKS — TRAINING LOG
+  Started: 2026-04-30 09:06:55
+----------------------------------------------------------------------
+Device          : cpu
+H5 Path         : d:\multi\scalogramv3\scalogram_v3_cosmic_final.h5
+V8 Checkpoint   : d:\multi\scalogramv3\checkpoints\v3_v8_conv_fpr_best_weights.pth
+Priors Dir      : d:\multi\scalogramv3\Bayesian\priors
+Epochs          : 30
+Backbone LR     : 1e-05
+Head LR         : 0.0002
+Weight Decay    : 0.05
+Gate Lambda     : 0.5
+Batch Size      : 16
+Mask Positives  : True
+Early Stop Pat. : 10
+
+----------------------------------------------------------------------
+  STEP 1: Loading Dataset with Station-Specific Dynamic Priors
+----------------------------------------------------------------------
+[OK] Train batches: 466
+[OK] Val batches  : 107
+[OK] Batch shapes: img=torch.Size([16, 3, 128, 1440]), cosmic=torch.Size([16, 2]), prior=torch.Size([16, 360]), event=torch.Size([16])
+[OK] Prior stats: sum=1.0000, max=0.0168
+[OK] DYNAMIC PRIORS VERIFIED: diff=0.0075
+
+----------------------------------------------------------------------
+  STEP 2: Building V9.2 Surgical Model
+----------------------------------------------------------------------
+[OK] Total params    : 9,529,740
+[OK] Trainable params: 2,846,786
+[OK] Frozen params   : 6,682,954
+[INFO] Trainable parameter groups:
+  _v8.features.7.0.block.0.0.weight  (221,184 params)
+  _v8.features.7.0.block.0.1.weight  (1,152 params)
+  _v8.features.7.0.block.0.1.bias  (1,152 params)
+  _v8.features.7.0.block.1.0.weight  (10,368 params)
+  _v8.features.7.0.block.1.1.weight  (1,152 params)
+  _v8.features.7.0.block.1.1.bias  (1,152 params)
+  _v8.features.7.0.block.2.fc1.weight  (55,296 params)
+  _v8.features.7.0.block.2.fc1.bias  (48 params)
+  _v8.features.7.0.block.2.fc2.weight  (55,296 params)
+  _v8.features.7.0.block.2.fc2.bias  (1,152 params)
+  _v8.features.7.0.block.3.0.weight  (368,640 params)
+  _v8.features.7.0.block.3.1.weight  (320 params)
+  _v8.features.7.0.block.3.1.bias  (320 params)
+  _v8.features.7.1.block.0.0.weight  (614,400 params)
+  _v8.features.7.1.block.0.1.weight  (1,920 params)
+  _v8.features.7.1.block.0.1.bias  (1,920 params)
+  _v8.features.7.1.block.1.0.weight  (17,280 params)
+  _v8.features.7.1.block.1.1.weight  (1,920 params)
+  _v8.features.7.1.block.1.1.bias  (1,920 params)
+  _v8.features.7.1.block.2.fc1.weight  (153,600 params)
+  _v8.features.7.1.block.2.fc1.bias  (80 params)
+  _v8.features.7.1.block.2.fc2.weight  (153,600 params)
+  _v8.features.7.1.block.2.fc2.bias  (1,920 params)
+  _v8.features.7.1.block.3.0.weight  (614,400 params)
+  _v8.features.7.1.block.3.1.weight  (320 params)
+  _v8.features.7.1.block.3.1.bias  (320 params)
+  _v8.features.8.0.weight  (409,600 params)
+  _v8.features.8.1.weight  (1,280 params)
+  _v8.features.8.1.bias  (1,280 params)
+  head_azimuth_bayesian.prior_proj.0.weight  (46,080 params)
+  head_azimuth_bayesian.prior_proj.0.bias  (128 params)
+  head_azimuth_bayesian.prior_proj.1.weight  (128 params)
+  head_azimuth_bayesian.prior_proj.1.bias  (128 params)
+  head_azimuth_bayesian.img_proj.0.weight  (65,536 params)
+  head_azimuth_bayesian.img_proj.0.bias  (128 params)
+  head_azimuth_bayesian.img_proj.1.weight  (128 params)
+  head_azimuth_bayesian.img_proj.1.bias  (128 params)
+  head_azimuth_bayesian.gate_net.0.weight  (32,768 params)
+  head_azimuth_bayesian.gate_net.0.bias  (128 params)
+  head_azimuth_bayesian.out_net.0.weight  (8,192 params)
+  head_azimuth_bayesian.out_net.0.bias  (64 params)
+  head_azimuth_bayesian.out_net.1.weight  (64 params)
+  head_azimuth_bayesian.out_net.1.bias  (64 params)
+  head_azimuth_bayesian.out_net.4.weight  (128 params)
+  head_azimuth_bayesian.out_net.4.bias  (2 params)
+
+----------------------------------------------------------------------
+  STEP 3: Optimizer & Scheduler (Differential LR)
+----------------------------------------------------------------------
+[OK] Loss      : VonMisesDirectionalLoss
+[OK] Optimizer : AdamW (backbone_lr=1e-05, head_lr=0.0002, wd=0.05)
+[OK] Scheduler : CosineAnnealingWarmRestarts (T_0=5, T_mult=1)
+
+======================================================================
+  STARTING V9.2 TRAINING — SURGICAL TWEAKS
+  Target: Val MAE < 25 deg
+======================================================================
+
+Epoch 01/30 | Loss=0.3227 DirLoss=0.2613 MAE=28.86 MedAE=9.32 | ValMAE=69.96 ValMedAE=40.00 | Gate(T/V)=0.694/0.902 | GatePen=0.1229 | LR=1.00e-05 | Samples(T/V)=3689/1628 | 1496.9s
+  NEW BEST Val MAE = 69.96deg -> saved: v9_2_surgical_best.pth
+Epoch 02/30 | Loss=0.1806 DirLoss=0.1767 MAE=20.00 MedAE=4.40 | ValMAE=70.59 ValMedAE=40.88 | Gate(T/V)=0.913/0.942 | GatePen=0.0078 | LR=9.05e-06 | Samples(T/V)=3785/1628 | 1330.9s
+Epoch 03/30 | Loss=0.1764 DirLoss=0.1745 MAE=19.10 MedAE=3.24 | ValMAE=69.86 ValMedAE=38.51 | Gate(T/V)=0.938/0.957 | GatePen=0.0039 | LR=6.55e-06 | Samples(T/V)=3679/1628 | 1359.9s
+  NEW BEST Val MAE = 69.86deg -> saved: v9_2_surgical_best.pth
+Epoch 04/30 | Loss=0.1689 DirLoss=0.1675 MAE=18.33 MedAE=2.78 | ValMAE=69.94 ValMedAE=38.86 | Gate(T/V)=0.946/0.959 | GatePen=0.0029 | LR=3.45e-06 | Samples(T/V)=3664/1628 | 1454.1s
+Epoch 05/30 | Loss=0.1783 DirLoss=0.1769 MAE=18.69 MedAE=2.60 | ValMAE=69.97 ValMedAE=39.10 | Gate(T/V)=0.948/0.960 | GatePen=0.0027 | LR=9.55e-07 | Samples(T/V)=3691/1628 | 1338.4s
+Epoch 06/30 | Loss=0.1751 DirLoss=0.1739 MAE=18.69 MedAE=2.22 | ValMAE=70.07 ValMedAE=39.31 | Gate(T/V)=0.953/0.967 | GatePen=0.0023 | LR=1.00e-05 | Samples(T/V)=3706/1628 | 1312.2s
+Epoch 07/30 | Loss=0.1724 DirLoss=0.1715 MAE=18.20 MedAE=1.79 | ValMAE=70.50 ValMedAE=40.77 | Gate(T/V)=0.960/0.971 | GatePen=0.0017 | LR=9.05e-06 | Samples(T/V)=3786/1628 | 1241.1s
+Epoch 08/30 | Loss=0.1851 DirLoss=0.1845 MAE=18.80 MedAE=1.44 | ValMAE=71.10 ValMedAE=42.43 | Gate(T/V)=0.965/0.972 | GatePen=0.0013 | LR=6.55e-06 | Samples(T/V)=3756/1628 | 1244.9s
+Epoch 09/30 | Loss=0.1652 DirLoss=0.1646 MAE=17.51 MedAE=1.26 | ValMAE=70.78 ValMedAE=41.73 | Gate(T/V)=0.966/0.974 | GatePen=0.0012 | LR=3.45e-06 | Samples(T/V)=3749/1628 | 1237.9s
+Epoch 10/30 | Loss=0.1812 DirLoss=0.1807 MAE=18.68 MedAE=1.22 | ValMAE=70.55 ValMedAE=41.06 | Gate(T/V)=0.968/0.974 | GatePen=0.0011 | LR=9.55e-07 | Samples(T/V)=3755/1628 | 1323.3s
+Epoch 11/30 | Loss=0.1670 DirLoss=0.1664 MAE=17.28 MedAE=1.08 | ValMAE=71.22 ValMedAE=42.63 | Gate(T/V)=0.966/0.971 | GatePen=0.0012 | LR=1.00e-05 | Samples(T/V)=3721/1628 | 1334.3s
+  [STOP] Early stopping triggered at epoch 11
+
+======================================================================
+  V9.2 TRAINING COMPLETE — SURGICAL TWEAKS
+======================================================================
+  Best Epoch       : 11
+  Best Val MAE     : 69.86deg
+  Checkpoint       : d:\multi\scalogramv3\Bayesian\v9_2_surgical_best.pth
+  Target MAE < 25deg : NOT YET
+======================================================================
+[OK] Training history -> d:\multi\scalogramv3\Bayesian\v9_2_training_history.csv

@@ -1,0 +1,39 @@
+# Dataset Files & Caches (Terlalu besar untuk GitHub)
+*.h5
+*.hdf5
+*.csv.gz
+
+# Preprocessed Tensors & Scalograms (Hampir 25,000 file)
+tensor/
+blindtest/
+data/
+logs/
+
+# Model Checkpoints / Weights (Terlalu besar, >500MB)
+*.pth
+*.pt
+*checkpoint*
+checkpoints/
+models/
+
+# All ZIP Archives (Mencegah pengunggahan rilis besar)
+*.zip
+
+# Python Caches & Compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual Environments (Clean exclusions)
+.venv/
+venv/
+.env/
+env/
+
+# Release Folders
+STGAT_V2_SOTA_Release/
+STGAT_Final_Release/
+
+# OS generated files
+.DS_Store
+Thumbs.db

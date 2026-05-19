@@ -1,0 +1,7 @@
+catalog       : D:\multi\scalogramv3\2026.csv
+station_lat   : 0.8126
+station_lon   : 127.367
+bandwidth_deg : 15.0
+n_events      : 836
+bins          : 360
+pdf_sum       : 1.00000000

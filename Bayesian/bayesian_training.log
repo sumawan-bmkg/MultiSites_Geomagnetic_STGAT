@@ -1,0 +1,178 @@
+
+============================================================
+  V9 BAYESIAN AZIMUTH TRAINING LOG
+  Started: 2026-04-28 11:01:04
+============================================================
+Device       : cpu
+H5 Path      : d:/multi/scalogramv3/scalogram_v3_cosmic_final.h5
+V8 Checkpoint: d:/multi/scalogramv3/best_model_v3_retrained.pth
+Prior Tensor : d:/multi/scalogramv3/Bayesian/spatial_prior_1d.pt
+Epochs       : 15
+LR           : 0.0001
+Batch Size   : 16
+Loss Fn      : sincos
+Mask Positive: True
+[OK] Prior dimuat  â€” shape=torch.Size([360])  sum=1.000000  max_bin=0.006134
+
+[INFO] Membuka HDF5: d:/multi/scalogramv3/scalogram_v3_cosmic_final.h5
+[OK] Train samples: 7456  |  Val samples: 1700
+
+[INFO] Membangun V9 Bayesian Model ...
+
+[INFO] Trainable parameter groups:
+  head_azimuth_bayesian.net.0.weight
+  head_azimuth_bayesian.net.0.bias
+  head_azimuth_bayesian.net.1.weight
+  head_azimuth_bayesian.net.1.bias
+  head_azimuth_bayesian.net.4.weight
+  head_azimuth_bayesian.net.4.bias
+  head_azimuth_bayesian.net.7.weight
+  head_azimuth_bayesian.net.7.bias
+[OK] Integritas frozen backbone terverifikasi.
+[OK] Loss: SineCosineLoss
+
+[OK] Optimizer: AdamW  lr=0.0001  wd=1e-05
+[OK] Scheduler: CosineAnnealingLR  T_max=15
+
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  STARTING TRAINING  (15 epoch max)
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+Epoch 01/15  | TrainLoss=0.2202  TrainMAE=71.91Âdeg  | ValLoss=0.7330  ValMAE=75.46Âdeg  | LR=9.89e-05  | 1028.3s
+  âœ… NEW BEST  VAL MAE=75.46Âdeg  â†’  saved: v9_bayesian_azimuth_best.pth
+Epoch 02/15  | TrainLoss=0.1618  TrainMAE=71.48Âdeg  | ValLoss=0.7353  ValMAE=75.22Âdeg  | LR=9.57e-05  | 1010.6s
+  âœ… NEW BEST  VAL MAE=75.22Âdeg  â†’  saved: v9_bayesian_azimuth_best.pth
+Epoch 03/15  | TrainLoss=0.1591  TrainMAE=69.79Âdeg  | ValLoss=0.7208  ValMAE=73.39Âdeg  | LR=9.05e-05  | 1010.1s
+  âœ… NEW BEST  VAL MAE=73.39Âdeg  â†’  saved: v9_bayesian_azimuth_best.pth
+Epoch 04/15  | TrainLoss=0.1568  TrainMAE=71.83Âdeg  | ValLoss=0.6998  ValMAE=71.07Âdeg  | LR=8.36e-05  | 1017.0s
+  âœ… NEW BEST  VAL MAE=71.07Âdeg  â†’  saved: v9_bayesian_azimuth_best.pth
+Epoch 05/15  | TrainLoss=0.1497  TrainMAE=70.89Âdeg  | ValLoss=0.7224  ValMAE=73.63Âdeg  | LR=7.52e-05  | 1008.1s
+Epoch 06/15  | TrainLoss=0.1440  TrainMAE=71.89Âdeg  | ValLoss=0.7090  ValMAE=72.37Âdeg  | LR=6.58e-05  | 1003.0s
+Epoch 07/15  | TrainLoss=0.1489  TrainMAE=69.62Âdeg  | ValLoss=0.7117  ValMAE=72.24Âdeg  | LR=5.57e-05  | 1007.7s
+Epoch 08/15  | TrainLoss=0.1521  TrainMAE=70.96Âdeg  | ValLoss=0.7660  ValMAE=77.57Âdeg  | LR=4.53e-05  | 1008.0s
+Epoch 09/15  | TrainLoss=0.1548  TrainMAE=71.77Âdeg  | ValLoss=0.7160  ValMAE=73.06Âdeg  | LR=3.52e-05  | 1007.3s
+Epoch 10/15  | TrainLoss=0.1437  TrainMAE=69.24Âdeg  | ValLoss=0.7286  ValMAE=74.46Âdeg  | LR=2.58e-05  | 990.5s
+
+============================================================
+  V9 BAYESIAN AZIMUTH TRAINING LOG
+  Started: 2026-04-28 13:57:34
+============================================================
+Device       : cpu
+H5 Path      : d:/multi/scalogramv3/scalogram_v3_cosmic_final.h5
+V8 Checkpoint: d:/multi/scalogramv3/checkpoints/v3_v8_conv_fpr_best_weights.pth
+Prior Tensor : d:/multi/scalogramv3/Bayesian/spatial_prior_1d.pt
+Epochs       : 15
+LR           : 0.0001
+Batch Size   : 16
+Loss Fn      : sincos
+Mask Positive: True
+[OK] Prior dimuat  â€” shape=torch.Size([360])  sum=1.000000  max_bin=0.006134
+
+[INFO] Membuka HDF5: d:/multi/scalogramv3/scalogram_v3_cosmic_final.h5
+[OK] Train samples: 7456  |  Val samples: 1700
+
+[INFO] Membangun V9 Bayesian Model ...
+
+[INFO] Trainable parameter groups:
+  head_azimuth_bayesian.net.0.weight
+  head_azimuth_bayesian.net.0.bias
+  head_azimuth_bayesian.net.1.weight
+  head_azimuth_bayesian.net.1.bias
+  head_azimuth_bayesian.net.4.weight
+  head_azimuth_bayesian.net.4.bias
+  head_azimuth_bayesian.net.7.weight
+  head_azimuth_bayesian.net.7.bias
+[OK] Integritas frozen backbone terverifikasi.
+[OK] Loss: SineCosineLoss
+
+[OK] Optimizer: AdamW  lr=0.0001  wd=1e-05
+[OK] Scheduler: CosineAnnealingLR  T_max=15
+
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  STARTING TRAINING  (15 epoch max)
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+Epoch 01/15  | TrainLoss=0.1793  TrainMAE=66.78Âdeg  | ValLoss=0.6994  ValMAE=71.04Âdeg  | LR=9.89e-05  | 1023.8s
+  âœ… NEW BEST  VAL MAE=71.04Âdeg  â†’  saved: v9_bayesian_azimuth_best.pth
+Epoch 02/15  | TrainLoss=0.1563  TrainMAE=65.99Âdeg  | ValLoss=0.6934  ValMAE=70.11Âdeg  | LR=9.57e-05  | 1010.9s
+  âœ… NEW BEST  VAL MAE=70.11Âdeg  â†’  saved: v9_bayesian_azimuth_best.pth
+Epoch 03/15  | TrainLoss=0.1605  TrainMAE=66.71Âdeg  | ValLoss=0.7080  ValMAE=72.39Âdeg  | LR=9.05e-05  | 1038.7s
+Epoch 04/15  | TrainLoss=0.1808  TrainMAE=67.39Âdeg  | ValLoss=0.7118  ValMAE=72.94Âdeg  | LR=8.36e-05  | 1010.3s
+Epoch 05/15  | TrainLoss=0.1704  TrainMAE=66.99Âdeg  | ValLoss=0.6982  ValMAE=70.85Âdeg  | LR=7.52e-05  | 1006.2s
+Epoch 06/15  | TrainLoss=0.1697  TrainMAE=66.77Âdeg  | ValLoss=0.7049  ValMAE=71.88Âdeg  | LR=6.58e-05  | 1006.2s
+Epoch 07/15  | TrainLoss=0.1620  TrainMAE=67.00Âdeg  | ValLoss=0.6998  ValMAE=71.08Âdeg  | LR=5.57e-05  | 1055.1s
+Epoch 08/15  | TrainLoss=0.1662  TrainMAE=66.71Âdeg  | ValLoss=0.7057  ValMAE=72.00Âdeg  | LR=4.53e-05  | 1011.5s
+Epoch 09/15  | TrainLoss=0.1664  TrainMAE=66.73Âdeg  | ValLoss=0.6990  ValMAE=70.97Âdeg  | LR=3.52e-05  | 1013.4s
+Epoch 10/15  | TrainLoss=0.1653  TrainMAE=66.79Âdeg  | ValLoss=0.7086  ValMAE=72.46Âdeg  | LR=2.58e-05  | 1026.1s
+Epoch 11/15  | TrainLoss=0.1633  TrainMAE=67.69Âdeg  | ValLoss=0.7003  ValMAE=71.16Âdeg  | LR=1.74e-05  | 1100.1s
+Epoch 12/15  | TrainLoss=0.1605  TrainMAE=65.85Âdeg  | ValLoss=0.7012  ValMAE=71.30Âdeg  | LR=1.05e-05  | 1088.7s
+Epoch 13/15  | TrainLoss=0.1663  TrainMAE=66.37Âdeg  | ValLoss=0.7029  ValMAE=71.56Âdeg  | LR=5.28e-06  | 1111.8s
+Epoch 14/15  | TrainLoss=0.1653  TrainMAE=66.17Âdeg  | ValLoss=0.7037  ValMAE=71.69Âdeg  | LR=2.08e-06  | 1029.4s
+Epoch 15/15  | TrainLoss=0.1671  TrainMAE=66.35Âdeg  | ValLoss=0.7039  ValMAE=71.73Âdeg  | LR=1.00e-06  | 1028.9s
+
+============================================================
+  TRAINING COMPLETE
+============================================================
+  Best Epoch     : 2
+  Best Val MAE   : 70.11Âdeg
+  Checkpoint     : d:\multi\scalogramv3\Bayesian\v9_bayesian_azimuth_best.pth
+============================================================
+[OK] Training history â†’ d:\multi\scalogramv3\Bayesian\training_history.csv
+
+============================================================
+  V9 VON MISES GATING TRAINING LOG
+  Started: 2026-04-29 07:32:01
+============================================================
+Optimizer: AdamW (lr=0.0005, wd=0.01)
+Scheduler: CosineAnnealingWarmRestarts (T_0=5)
+Epoch 01/25 | Loss=0.3642 MAE=22.92° | ValLoss=0.8116 ValMAE=78.33° | LR=5.00e-04 | 1039.4s
+
+============================================================
+  V9 VON MISES GATING TRAINING LOG
+  Started: 2026-04-29 08:51:13
+============================================================
+Optimizer: AdamW (lr=0.0005, wd=0.01)
+Scheduler: CosineAnnealingWarmRestarts (T_0=5)
+Epoch 01/25 | Loss=0.3592 MAE=21.56 deg | ValLoss=0.8286 ValMAE=79.40 deg | LR=5.00e-04 | 1007.9s
+  [NEW BEST] Val MAE = 79.40 deg
+Epoch 02/25 | Loss=0.3445 MAE=21.75 deg | ValLoss=0.8295 ValMAE=79.45 deg | LR=4.52e-04 | 1011.0s
+Epoch 03/25 | Loss=0.3559 MAE=22.36 deg | ValLoss=0.8186 ValMAE=78.77 deg | LR=3.27e-04 | 1029.1s
+  [NEW BEST] Val MAE = 78.77 deg
+Epoch 04/25 | Loss=0.3591 MAE=22.43 deg | ValLoss=0.8116 ValMAE=78.33 deg | LR=1.73e-04 | 998.7s
+  [NEW BEST] Val MAE = 78.33 deg
+Epoch 05/25 | Loss=0.3655 MAE=23.25 deg | ValLoss=0.8158 ValMAE=78.60 deg | LR=4.77e-05 | 999.4s
+Epoch 06/25 | Loss=0.3630 MAE=22.30 deg | ValLoss=0.8187 ValMAE=78.78 deg | LR=5.00e-04 | 1010.8s
+Epoch 07/25 | Loss=0.3477 MAE=21.79 deg | ValLoss=0.8339 ValMAE=79.71 deg | LR=4.52e-04 | 1013.2s
+Epoch 08/25 | Loss=0.3660 MAE=22.56 deg | ValLoss=0.8135 ValMAE=78.45 deg | LR=3.27e-04 | 1004.5s
+Epoch 09/25 | Loss=0.3592 MAE=22.52 deg | ValLoss=0.8213 ValMAE=78.94 deg | LR=1.73e-04 | 973.2s
+Epoch 10/25 | Loss=0.3571 MAE=22.43 deg | ValLoss=0.8225 ValMAE=79.01 deg | LR=4.77e-05 | 1041.9s
+
+============================================================
+  V9 VON MISES GATING TRAINING LOG
+  Started: 2026-04-29 12:06:33
+============================================================
+Optimizer: AdamW (lr=0.0002, wd=0.05)
+Scheduler: CosineAnnealingWarmRestarts (T_0=5)
+Epoch 01/25 | Loss=0.3755 MAE=21.42 deg | ValMAE=79.77 deg | Gate(T/V)=0.174/0.099 | LR=2.00e-04 | 1214.8s
+  [NEW BEST] Val MAE = 79.77 deg
+Epoch 02/25 | Loss=0.3664 MAE=18.27 deg | ValMAE=79.74 deg | Gate(T/V)=0.077/0.049 | LR=1.81e-04 | 1020.5s
+  [NEW BEST] Val MAE = 79.74 deg
+Epoch 03/25 | Loss=0.3576 MAE=19.03 deg | ValMAE=79.91 deg | Gate(T/V)=0.046/0.033 | LR=1.31e-04 | 984.6s
+Epoch 04/25 | Loss=0.3649 MAE=19.17 deg | ValMAE=79.57 deg | Gate(T/V)=0.033/0.025 | LR=6.91e-05 | 974.4s
+  [NEW BEST] Val MAE = 79.57 deg
+Epoch 05/25 | Loss=0.3617 MAE=18.95 deg | ValMAE=79.55 deg | Gate(T/V)=0.028/0.023 | LR=1.91e-05 | 992.9s
+  [NEW BEST] Val MAE = 79.55 deg
+Epoch 06/25 | Loss=0.3506 MAE=19.85 deg | ValMAE=79.59 deg | Gate(T/V)=0.021/0.012 | LR=2.00e-04 | 1010.9s
+Epoch 07/25 | Loss=0.3625 MAE=19.96 deg | ValMAE=78.72 deg | Gate(T/V)=0.012/0.007 | LR=1.81e-04 | 1150.2s
+  [NEW BEST] Val MAE = 78.72 deg
+Epoch 08/25 | Loss=0.3570 MAE=21.11 deg | ValMAE=78.78 deg | Gate(T/V)=0.009/0.006 | LR=1.31e-04 | 1000.1s
+Epoch 09/25 | Loss=0.3638 MAE=21.11 deg | ValMAE=78.69 deg | Gate(T/V)=0.007/0.005 | LR=6.91e-05 | 1082.9s
+  [NEW BEST] Val MAE = 78.69 deg
+Epoch 10/25 | Loss=0.3535 MAE=21.60 deg | ValMAE=78.71 deg | Gate(T/V)=0.006/0.004 | LR=1.91e-05 | 1155.6s
+Epoch 11/25 | Loss=0.3594 MAE=21.27 deg | ValMAE=78.78 deg | Gate(T/V)=0.005/0.003 | LR=2.00e-04 | 1246.3s
+Epoch 12/25 | Loss=0.3493 MAE=21.61 deg | ValMAE=78.90 deg | Gate(T/V)=0.003/0.002 | LR=1.81e-04 | 1170.7s
+Epoch 13/25 | Loss=0.3523 MAE=21.69 deg | ValMAE=78.96 deg | Gate(T/V)=0.003/0.002 | LR=1.31e-04 | 1205.0s
+Epoch 14/25 | Loss=0.3590 MAE=21.33 deg | ValMAE=78.84 deg | Gate(T/V)=0.002/0.001 | LR=6.91e-05 | 1176.9s
+Epoch 15/25 | Loss=0.3574 MAE=21.67 deg | ValMAE=78.86 deg | Gate(T/V)=0.002/0.001 | LR=1.91e-05 | 1161.3s
+Epoch 16/25 | Loss=0.3610 MAE=22.00 deg | ValMAE=78.93 deg | Gate(T/V)=0.002/0.001 | LR=2.00e-04 | 1204.7s
+  [STOP] EARLY STOPPING triggered at epoch 16
+
+Training Complete. Best Val MAE: 78.69 deg

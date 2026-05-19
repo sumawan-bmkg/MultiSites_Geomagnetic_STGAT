@@ -1,0 +1,87 @@
+
+----------------------------------------------------------------------
+  V9.1 STATION-SPECIFIC DYNAMIC PRIORS — TRAINING LOG
+  Started: 2026-04-29 18:49:53
+----------------------------------------------------------------------
+Device          : cpu
+H5 Path         : d:\multi\scalogramv3\scalogram_v3_cosmic_final.h5
+V8 Checkpoint   : d:\multi\scalogramv3\checkpoints\v3_v8_conv_fpr_best_weights.pth
+Priors Dir      : d:\multi\scalogramv3\Bayesian\priors
+Epochs          : 30
+LR              : 0.0002
+Weight Decay    : 0.05
+Gate Lambda     : 0.05
+Batch Size      : 16
+Mask Positives  : True
+Early Stop Pat. : 10
+
+----------------------------------------------------------------------
+  STEP 1: Loading Dataset with Station-Specific Dynamic Priors
+----------------------------------------------------------------------
+[OK] Train batches: 466
+[OK] Val batches  : 107
+[OK] Batch shapes: img=torch.Size([16, 3, 128, 1440]), cosmic=torch.Size([16, 2]), prior=torch.Size([16, 360]), event=torch.Size([16])
+[OK] Prior stats: sum=1.0000, max=0.0155
+[OK] ✅ DYNAMIC PRIORS VERIFIED: samples have DIFFERENT priors (diff=1.7464)
+
+----------------------------------------------------------------------
+  STEP 2: Building V9 Gated Bayesian Model (Frozen Backbone)
+----------------------------------------------------------------------
+[OK] Total params    : 9,529,740
+[OK] Trainable params: 153,794
+[OK] Frozen params   : 9,375,946
+
+[INFO] Trainable parameter groups:
+  head_azimuth_bayesian.prior_proj.0.weight  (46,080 params)
+  head_azimuth_bayesian.prior_proj.0.bias  (128 params)
+  head_azimuth_bayesian.prior_proj.1.weight  (128 params)
+  head_azimuth_bayesian.prior_proj.1.bias  (128 params)
+  head_azimuth_bayesian.img_proj.0.weight  (65,536 params)
+  head_azimuth_bayesian.img_proj.0.bias  (128 params)
+  head_azimuth_bayesian.img_proj.1.weight  (128 params)
+  head_azimuth_bayesian.img_proj.1.bias  (128 params)
+  head_azimuth_bayesian.gate_net.0.weight  (32,768 params)
+  head_azimuth_bayesian.gate_net.0.bias  (128 params)
+  head_azimuth_bayesian.out_net.0.weight  (8,192 params)
+  head_azimuth_bayesian.out_net.0.bias  (64 params)
+  head_azimuth_bayesian.out_net.1.weight  (64 params)
+  head_azimuth_bayesian.out_net.1.bias  (64 params)
+  head_azimuth_bayesian.out_net.4.weight  (128 params)
+  head_azimuth_bayesian.out_net.4.bias  (2 params)
+
+----------------------------------------------------------------------
+  STEP 3: Optimizer & Scheduler Setup
+----------------------------------------------------------------------
+[OK] Loss      : VonMisesDirectionalLoss
+[OK] Optimizer : AdamW (lr=0.0002, wd=0.05)
+[OK] Scheduler : CosineAnnealingWarmRestarts (T_0=5, T_mult=1)
+
+======================================================================
+  STARTING V9.1 TRAINING — STATION-SPECIFIC DYNAMIC PRIORS
+  Target: Val MAE < 25°
+======================================================================
+
+Epoch 01/30 | Loss=0.1964 MAE=23.78° MedAE=8.93° | ValMAE=68.50° ValMedAE=39.88° | Gate(T/V)=0.222/0.154 | LR=2.00e-04 | Samples(T/V)=3749/1628 | 1925.8s
+  ★ NEW BEST Val MAE = 68.50° → saved: v9_1_dynamic_prior_best.pth
+Epoch 02/30 | Loss=0.1729 MAE=19.57° MedAE=4.91° | ValMAE=67.27° ValMedAE=38.27° | Gate(T/V)=0.111/0.081 | LR=1.81e-04 | Samples(T/V)=3685/1628 | 1827.8s
+  ★ NEW BEST Val MAE = 67.27° → saved: v9_1_dynamic_prior_best.pth
+Epoch 03/30 | Loss=0.1622 MAE=17.93° MedAE=3.73° | ValMAE=66.01° ValMedAE=33.87° | Gate(T/V)=0.064/0.053 | LR=1.31e-04 | Samples(T/V)=3733/1628 | 1817.3s
+  ★ NEW BEST Val MAE = 66.01° → saved: v9_1_dynamic_prior_best.pth
+Epoch 04/30 | Loss=0.1675 MAE=18.28° MedAE=3.13° | ValMAE=65.34° ValMedAE=36.70° | Gate(T/V)=0.047/0.037 | LR=6.91e-05 | Samples(T/V)=3740/1628 | 1822.7s
+  ★ NEW BEST Val MAE = 65.34° → saved: v9_1_dynamic_prior_best.pth
+Epoch 05/30 | Loss=0.1598 MAE=17.83° MedAE=2.99° | ValMAE=65.29° ValMedAE=35.04° | Gate(T/V)=0.039/0.036 | LR=1.91e-05 | Samples(T/V)=3715/1628 | 1828.5s
+  ★ NEW BEST Val MAE = 65.29° → saved: v9_1_dynamic_prior_best.pth
+Epoch 06/30 | Loss=0.1555 MAE=17.41° MedAE=2.95° | ValMAE=67.17° ValMedAE=37.86° | Gate(T/V)=0.036/0.030 | LR=2.00e-04 | Samples(T/V)=3774/1628 | 1813.1s
+Epoch 07/30 | Loss=0.1621 MAE=17.61° MedAE=2.52° | ValMAE=65.55° ValMedAE=33.25° | Gate(T/V)=0.028/0.025 | LR=1.81e-04 | Samples(T/V)=3762/1628 | 1820.2s
+Epoch 08/30 | Loss=0.1389 MAE=15.26° MedAE=1.96° | ValMAE=65.15° ValMedAE=33.92° | Gate(T/V)=0.023/0.016 | LR=1.31e-04 | Samples(T/V)=3684/1628 | 1818.4s
+  ★ NEW BEST Val MAE = 65.15° → saved: v9_1_dynamic_prior_best.pth
+Epoch 09/30 | Loss=0.1625 MAE=16.83° MedAE=1.70° | ValMAE=65.85° ValMedAE=35.16° | Gate(T/V)=0.017/0.012 | LR=6.91e-05 | Samples(T/V)=3721/1628 | 1819.5s
+Epoch 10/30 | Loss=0.1529 MAE=16.35° MedAE=1.65° | ValMAE=64.81° ValMedAE=35.40° | Gate(T/V)=0.016/0.012 | LR=1.91e-05 | Samples(T/V)=3746/1628 | 1820.0s
+  ★ NEW BEST Val MAE = 64.81° → saved: v9_1_dynamic_prior_best.pth
+Epoch 11/30 | Loss=0.1474 MAE=15.83° MedAE=1.64° | ValMAE=65.44° ValMedAE=35.93° | Gate(T/V)=0.016/0.010 | LR=2.00e-04 | Samples(T/V)=3680/1628 | 1816.3s
+Epoch 12/30 | Loss=0.1593 MAE=16.32° MedAE=1.53° | ValMAE=64.76° ValMedAE=35.83° | Gate(T/V)=0.016/0.011 | LR=1.81e-04 | Samples(T/V)=3747/1628 | 1824.3s
+Epoch 13/30 | Loss=0.1706 MAE=17.57° MedAE=1.53° | ValMAE=63.77° ValMeEpoch 13/30 | Loss=0.1500 MAE=16.03° MedAE=1.38° | ValMAE=64.17° ValMedAE=35.86° | Gate(T/V)=0.014/0.009 | LR=1.31e-04 | Samples(T/V)=3765/1628 | 1821.3s
+Epoch 14/30 | Loss=0.1511 MAE=16.23° MedAE=1.38° | ValMAE=63.86° ValMeEpoch 14/30 | Loss=0.1543 MAE=15.87° MedAE=1.17° | ValMAE=64.41° ValMedAE=35.60° |Epoch 15/30 | Loss=0.1473 MAE=15.62° MedAE=1.29° | ValMAE=64.40° ValMeEpoch 15/30 | Loss=0.1576 MAE=16.40° MedAE=1.19° | ValMAE=64.55° ValMedAE=36.04° |Epoch 16/30 | Loss=0.1578 MAE=16.76° MedAE=1.36° | ValMAE=63.79° ValMeEpoch 16/30 | Loss=0.1538 MAE=16.27° MedAE=1.25° | ValMAE=65.88° ValMedAE=36.42° |Epoch 17/30 | Loss=0.1539 MAE=16.57° MedAE=1.29° | ValMAE=64.74° ValMeEpoch 17/30 | Loss=0.1687 MAE=17.20° MedAE=1.22° | ValMAE=65.03° ValMedAE=36.42° |Epoch 18/30 | Loss=0.1747 MAE=17.96° MedAE=1.31° | ValMAE=64.98° ValMeEpoch 18/30 | Loss=0.1577 MAE=16.33° MedAE=1.18° | ValMAE=65.00° ValMedAE=34.90° |Epoch 19/30 | Loss=0.1510 MAE=15.96° MedAE=1.14° | ValMAE=64.35° ValMeEpoch 19/30 | Loss=0.1508 MAE=15.82° MedAE=1.00° | ValMAE=64.92° ValMedAE=34.94° |Epoch 20/30 | Loss=0.1506 MAE=15.38° MedAE=1.06° | ValMAE=64.78° ValMeEpoch 20/30 | Loss=0.1541 MAE=15.92° MedAE=0.96° | ValMAE=64.26° ValMedAE=34.88° |Epoch 21/30 | Loss=0.1511 MAE=15.77° MedAE=1.11° | ValMAE=63.86° ValMeEpoch 21/30 | Loss=0.1529 MAE=16.16° MedAE=1.15° | ValMAE=63.46° ValMedAE=33.10° |Epoch 22/30 | Loss=0.1608 MAE=16.79° MedAE=1.06° | ValMAE=63.36° ValMedAE=34.49° | Gate(T/V)=0.005/0.003 | LR=1.81e-04 | Samples(T/V)=3755/162Epoch 22/30 | Loss=0.1555 MAE=16.09° MedAE=1.17° | ValMAE=65.91° ValMedAE=36.07° |Epoch 23/30 | Loss=0.1447 MAE=15.38° MedAE=0.99° | ValMAE=63.23° ValMeEpoch 23/30 | Loss=0.1550 MAE=16.31° MedAE=1.03° | ValMAE=64.54° ValMedAE=36.19° | Gate(T/V)=0.008/0.006 | LR=1.31e-04 | Samples(T/V)=3665/1628 | 1823.6s
+Epoch 24/30 | Loss=0.1614 MAE=16.68° MedAE=1.03° | ValMAE=64.92° ValMedAE=35.58° | Gate(T/V)=0.008/0.006 | LR=6.91e-05 | Samples(T/V)=3744/1628 | 1818.7s
+Epoch 25/30 | Loss=0.1595 MAE=16.37° MedAE=0.90° | ValMAE=64.68° ValMedAE=35.28° | Gate(T/V)=0.008/0.006 | LR=1.91e-05 | Samples(T/V)=3806/1628 | 1830.0s
+  ★ NEW BEST Val MAE = 63.06° → saved: v9_1_dynamic_prior_best.pth

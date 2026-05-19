@@ -1,0 +1,22 @@
+﻿python : 2026-05-18 07:35:23,236 - INFO - Training Resilient STGAT on cpu
+At line:1 char:1
++ python src/stgat_v2/train_resilient.py > sanity_output.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-05-18 07:3...nt STGAT on cpu:String) [], RemoteE 
+   xception
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-05-18 07:35:23,236 - INFO - Performing Smart Subsampling to rescue RAM...
+2026-05-18 07:35:23,239 - INFO - Total train samples: 4 (Sanity Check Mode)
+2026-05-18 07:35:24,900 - INFO - Loading base weights from 
+d:/multi/scalogramv3/checkpoints/v3_v8_best.pth
+[WARNING]: Menjalankan mode MICRO-BATCH SANITY CHECK (4 Sampel) [WARNING]
+
+==================================================
+OOM PROTECTION: Freezing spatial_encoder (EfficientNet)...
+Strategy: Sequential Station processing enabled in model.py
+Strategy: Reconstruction Loss bypassed (lambda_recon=0.0)
+==================================================
+
+
+Epoch 1/3 [Warm-up]:   0%|          | 0/4 [00:00<?, ?it/s]

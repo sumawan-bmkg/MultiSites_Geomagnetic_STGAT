@@ -1,0 +1,6 @@
+2026-05-07 15:49:24,055 - INFO - Training Resilient STGAT on cpu
+2026-05-07 15:49:24,057 - INFO - Performing Smart Subsampling to rescue RAM...
+2026-05-07 15:49:24,107 - INFO - Total train samples after subsampling: 105 (Event: 88, Noise: 17)
+2026-05-07 15:49:25,908 - INFO - Loading base weights from d:/multi/scalogramv3/checkpoints/v3_v8_best.pth
+2026-05-07 15:49:26,507 - INFO - Starting Fase 1: Warm-up (Freezing Spatial Encoder)...
+Epoch 1/2:   0%|          | 0/105 [00:00<?, ?it/s]
