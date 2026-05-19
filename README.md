@@ -1,8 +1,23 @@
-# ANTIGRAVITY Project
+# Multi-Site STGAT Resilient V2
+### Spatio-Temporal Graph Attention Network with Geodesic Prior & Unit Circle Cosine Similarity Loss
 
-## Spatio-Temporal Graph Neural Network (GNN) & Dynamic Physics-Informed Neural Network (DPINN)
+![Graphical Abstract](graphical_abstract.png)
 
-Proyek ini bertujuan untuk melakukan prediksi gempa bumi menggunakan kombinasi Graph Neural Network (GNN) dan Physics-Informed Neural Network (DPINN) dengan data dari 24 stasiun seismik di Indonesia.
+Proyek ini merupakan repositori resmi untuk arsitektur deep learning **Multi-Site STGAT Resilient V2**, sebuah sistem deteksi anomali Pc3/Pc5 geomagnetic terdistribusi berbasis **Spatio-Temporal Graph Attention Network** yang dirancang untuk melakukan prakiraan parameter gempa bumi secara terdistribusi di 24 stasiun magnetometer seismik BMKG Indonesia.
+
+---
+
+## 🚀 Fitur Unggulan SOTA (V2 Resilient Edition)
+
+1. **Geodesic Prior Matrix Injection (Strategi C):**
+   Mengintegrasikan peta koordinat GPS stasiun bumi melalui matriks prior jarak spasial geodesik $24 \times 24$ ke dalam Graph Attention Network (GAT) spasial. Ini membiaskan atensi dinamis secara fisik berdasarkan hukum propagasi fisis bumi untuk akurasi pelokalan azimuth stasiun yang sangat tinggi.
+2. **Unit Vector Cosine Similarity Loss (Strategi A):**
+   Memproyeksikan target derajat azimuth ($0^\circ - 360^\circ$) ke dalam sistem koordinat Kartesian Unit Circle 2D. Dengan membandingkan vektor prediksi dan target via Cosine Loss, model berhasil menembus diskontinuitas batas lingkaran derajat tradisional sehingga mencapai konvergensi MAE Azimuth optimal.
+3. **Hard Physics Gate (Kp-Index Suppression):**
+   Filter deterministik hibrida AI-Fisika pada loop inferensi yang memanfaatkan fitur indeks matahari (Kp dan Dst) dari `cosmic_features` untuk memblokir anomali semu (False Positives) selama periode badai geomagnetik matahari ekstrem (Solar Cycle 25).
+4. **Phase-Preserving Temporal Max Pooling:**
+   Menggunakan Max Pooling pada ekstraksi fitur temporal guna mempertahankan fase puncak kedatangan gelombang mikro Pc3/Pc5 yang krusial bagi triangulasi spasial, menggantikan model rata-rata (Average Pooling) konvensional.
+
 
 ## Struktur Proyek
 
