@@ -1,7 +1,8 @@
 # Multi-Site STGAT Resilient V2
 ### Spatio-Temporal Graph Attention Network with Geodesic Prior & Unit Circle Cosine Similarity Loss
 
-![Graphical Abstract](graphical_abstract.png)
+<img width="1024" height="440" alt="graphical_abstract" src="https://github.com/user-attachments/assets/ae7135b8-3362-425d-933c-075607b7b607" />
+
 
 Proyek ini merupakan repositori resmi untuk arsitektur deep learning **Multi-Site STGAT Resilient V2**, sebuah sistem deteksi anomali Pc3/Pc5 geomagnetic terdistribusi berbasis **Spatio-Temporal Graph Attention Network** yang dirancang untuk melakukan prakiraan parameter gempa bumi secara terdistribusi di 24 stasiun magnetometer seismik BMKG Indonesia.
 
@@ -86,4 +87,4 @@ MIT License
 
 ## Kontak
 
-ANTIGRAVITY Research Team
+Geomagnetic Research Team
